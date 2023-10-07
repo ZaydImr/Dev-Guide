@@ -3,11 +3,17 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
     {
         path: '',
-        loadComponent: () => import('./modules/home/home.component').then(res => res.HomeComponent),
+        loadComponent: () => import('./modules/layouts/app-layout/app-layout.component').then(res => res.AppLayoutComponent),
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./modules/home/home.component').then(res => res.HomeComponent)
+            }
+        ]
     },
     {
         path: 'login',
-        loadComponent: () => import('./modules/auth/layout/layout.component').then(res => res.LayoutComponent),
+        loadComponent: () => import('./modules/layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
         children: [
             {
                 path: '',
@@ -17,7 +23,7 @@ export const routes: Routes = [
     },
     {
         path: 'register',
-        loadComponent: () => import('./modules/auth/layout/layout.component').then(res => res.LayoutComponent),
+        loadComponent: () => import('./modules/layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
         children: [
             {
                 path: '',
