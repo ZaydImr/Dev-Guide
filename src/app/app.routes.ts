@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
     {
         path: '',
-        loadComponent: () => import('./modules/layouts/app-layout/app-layout.component').then(res => res.AppLayoutComponent),
+        loadComponent: () => import('./layouts/app-layout/app-layout.component').then(res => res.AppLayoutComponent),
         children: [
             {
                 path: '',
@@ -13,7 +13,7 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        loadComponent: () => import('./modules/layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
+        loadComponent: () => import('./layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
         children: [
             {
                 path: '',
@@ -23,11 +23,21 @@ export const routes: Routes = [
     },
     {
         path: 'register',
-        loadComponent: () => import('./modules/layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
+        loadComponent: () => import('./layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
         children: [
             {
                 path: '',
                 loadComponent: () => import('./modules/auth/register/register.component').then(res => res.RegisterComponent)
+            }
+        ]
+    },
+    {
+        path: 'forgot-password',
+        loadComponent: () => import('./layouts/auth-layout/auth-layout.component').then(res => res.AuthLayoutComponent),
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./modules/auth/forgot-password/forgot-password.component').then(res => res.ForgotPasswordComponent)
             }
         ]
     },
